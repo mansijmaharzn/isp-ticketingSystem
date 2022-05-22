@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block title %}Tickets{% endblock %}
+{% block content %}
+<br>
+<h1 align="center">Your Tickets</h1>
+{% for ticket in user.tickets|reverse %}
+<div class="card">
+    <div class=" card-header">
+        @ {{ ticket.date }}
+    </div>
+    <div class="card-body">
+        <h5 class="card-title">{{ ticket.title }}</h5>
+        <p class="card-text">{{ ticket.desc }}</p>
+        <p class="card-text"> Ticket Status: {{ ticket.status }}</p>
+    </div>
+</div>
+<br />
+{% endfor %}
+
+
+<a href="/support"><button type="button" class="btn btn-primary">Report Problem</button></a>
+{% endblock %}

@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block title %}Technical Support{% endblock %}
+
+{% block content %}
+<br>
+<h1 align="center">Report Your Problem</h1>
+<p align="center">We'll contact you as soon as possible.</p>
+<br>
+<form method="POST">
+    <h5>Problem Type</h5>
+    <select class="form-control" id="title" name="title">
+        <option>No Internet</option>
+        <option>Slow Internet</option>
+        <option>Other Queries</option>
+    </select>
+    <br>
+    <h5>Description</h5>
+    <div class="form-outline mb-4">
+        <textarea name="desc" id="desc" class="form-control" id="form4Example3" rows="4"></textarea>
+        <label class="form-label" for="form4Example3">Message (Optional)</label>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+{% endblock %}

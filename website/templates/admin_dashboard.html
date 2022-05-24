@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}Home{% endblock %}</title>
+    <title>Admin Dashboard</title>
 
     <!-- BootstrapCSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
@@ -22,7 +22,6 @@
 </head>
 
 <body>
-    {% if user.is_authenticated %}
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <!-- Container wrapper -->
@@ -37,7 +36,7 @@
             <!-- Collapsible wrapper -->
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <!-- Navbar brand -->
-                <a class="navbar-brand mt-2 mt-lg-0" href="/">
+                <a class="navbar-brand mt-2 mt-lg-0" href="#">
                     <!-- <img src="https://mdbcdn.b-cdn.net/img/logo/mdb-transaprent-noshadows.webp" height="15"
                         alt="MDB Logo" loading="lazy" /> -->
                     KattuLink
@@ -45,10 +44,7 @@
                 <!-- Left links -->
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link" href="/">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/tickets">Your Tickets</a>
+                        <a class="nav-link" href="/admin-dashboard">Dashboard</a>
                     </li>
                 </ul>
                 <!-- Left links -->
@@ -90,59 +86,10 @@
                     </a>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuAvatar">
                         <li>
-                            <a class="dropdown-item" href="/profile">My Profile</a>
-                        </li>
-                        <li>
-                            <a class="dropdown-item" href="/support">Support</a>
-                        </li>
-                        <li>
                             <a class="dropdown-item" href="/logout">Logout</a>
                         </li>
                     </ul>
                 </div>
-
-                {% else %}
-                <!-- Navbar -->
-                <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                    <!-- Container wrapper -->
-                    <div class="container-fluid">
-                        <!-- Navbar brand -->
-                        <a class="navbar-brand me-2" href="#">
-                            KattuLink
-                        </a>
-
-                        <!-- Toggle button -->
-                        <button class="navbar-toggler" type="button" data-mdb-toggle="collapse"
-                            data-mdb-target="#navbarButtonsExample" aria-controls="navbarButtonsExample"
-                            aria-expanded="false" aria-label="Toggle navigation">
-                            <i class="fas fa-bars"></i>
-                        </button>
-
-                        <!-- Collapsible wrapper -->
-                        <div class="collapse navbar-collapse" id="navbarButtonsExample">
-                            <!-- Left links -->
-                            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                            </ul>
-                            <!-- Left links -->
-
-                            <div class="d-flex align-items-center">
-                                <button type="button" class="btn btn-link px-2 me-2">
-                                    <a href="/login" style="text-decoration:none;">Login</a>
-                                </button>
-                                <button type="button" class="btn btn-primary me-3" href="/sign-up">
-                                    <a href="/sign-up" style="text-decoration:none; color:white;">Sign up for free</a>
-                                </button>
-                                <a class="btn btn-dark px-3" href="/admin-signup" role="button"><i class="fa fa-user"
-                                        style="font-size:15px"></i></a>
-                            </div>
-                        </div>
-                        <!-- Collapsible wrapper -->
-                    </div>
-                    <!-- Container wrapper -->
-                </nav>
-                <!-- Navbar -->
-
-                {% endif %}
             </div>
             <!-- Right elements -->
         </div>
@@ -150,27 +97,48 @@
     </nav>
     <!-- NavBar -->
 
+    <br>
+    <h1 align="center">Admin Dashboard</h1>
+    <p align="center">Hi, {{ user.first_name }} our clients need your help!</p>
 
-    <!-- Flashs -->
-    {% with messages = get_flashed_messages(with_categories=true) %} {% if messages %} {% for category, message in
-    messages %} {% if category == 'error' %}
-    <div class="alert alert-danger alter-dismissable fade show" role="alert">
-        {{ message }}
-        <button type="button" class="close" data-dismiss="alert">
-            <span aria-hidden="true">&times;</span>
-        </button>
-    </div>
-    {% else %}
-    <div class="alert alert-success alter-dismissable fade show" role="alert">
-        {{ message }}
-        <button type="button" class="close" data-dismiss="alert">
-            <span aria-hidden="true">&times;</span>
-        </button>
-    </div>
-    {% endif %} {% endfor %} {% endif %} {% endwith %}
+    <div class="container">
+        <!-- Tickets -->
+        {% for ticket in allTicket|reverse %}
 
-    <!-- Contents -->
-    <div class="container">{% block content %} {% endblock %}</div>
+        {% if ticket.status == 'Pending' %}
+        <div class="card">
+            <div class=" card-header">
+                @ {{ ticket.date }}
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">{{ ticket.title }}</h5>
+                <p class="card-text">{{ ticket.desc }}</p>
+                <p class="card-text">Opened By: {{ ticket.username }}</p>
+            </div>
+            <div class="btn-group" role="group">
+                <button type="button" class="btn btn-danger" onClick='closeTicket({{ticket.id}})'>Close</button>
+                <button type="button" class="btn btn-success" onClick='solveTicket({{ticket.id}})'>Solve</button>
+            </div>
+        </div>
+        <br />
+        {% else %}
+        <div class="card">
+            <div class=" card-header">
+                @ {{ ticket.date }}
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">{{ ticket.title }}</h5>
+                <p class="card-text">{{ ticket.desc }}</p>
+                <p class="card-text">Opened By: {{ ticket.username }}</p>
+                <p class="card-text">Status: {{ ticket.status }}</p>
+            </div>
+        </div>
+        <br />
+        {% endif %}
+        {% endfor %}
+    </div>
+
+
 
     <!-- BootstrapScripts -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
@@ -185,6 +153,8 @@
     <!-- MD BootstrapScripts -->
     <!-- MDB -->
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.0.0/mdb.min.js"></script>
+    <!-- JavaScript -->
+    <script src="/static/index.js"></script>
 </body>
 
 </html>

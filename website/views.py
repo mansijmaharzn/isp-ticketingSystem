@@ -51,15 +51,16 @@ def profile():
 
 
 # Admin
-@views.route('admin-dashboard')
+@views.route('/admin-dashboard')
 @login_required
 def adminDashboard():
-    return render_template('admin_dashboard.html', user=current_user)
+    allTicket = Ticket.query.all()
+    return render_template('admin_dashboard.html', user=current_user, allTicket=allTicket)
 
 
 # @views.route('/delete-ticket', methods=['POST'])
 # @login_required
-# def delete_post():
+# def delete_ticket():
 #     ticket = json.loads(request.data)
 #     ticketId = ticket['ticketId']
 #     ticket = Ticket.query.get(ticketId)
@@ -69,3 +70,31 @@ def adminDashboard():
 #             db.session.commit()
 
 #     return jsonify({})
+
+
+@views.route('/close-ticket', methods=['POST'])
+@login_required
+def close_ticket():
+    ticket = json.loads(request.data)
+    print(ticket)
+    ticketId = ticket['ticketId']
+    ticket = Ticket.query.get(ticketId)
+    if ticket:
+        ticket.status = "Closed"
+        db.session.commit()
+
+    return jsonify({})
+
+
+@views.route('/solve-ticket', methods=['POST'])
+@login_required
+def solve_ticket():
+    ticket = json.loads(request.data)
+    print(ticket)
+    ticketId = ticket['ticketId']
+    ticket = Ticket.query.get(ticketId)
+    if ticket:
+        ticket.status = "Solved"
+        db.session.commit()
+
+    return jsonify({})

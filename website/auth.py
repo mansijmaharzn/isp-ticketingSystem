@@ -25,6 +25,9 @@ def login():
                     message="New Login!", status="success", user_id=current_user.id)
                 db.session.add(new_notification)
                 db.session.commit()
+                if user.accountType == "admin":
+                    return redirect(url_for('views.adminDashboard', user=current_user))
+
                 return redirect(url_for('views.home', user=current_user))
             else:
                 flash('Incorrect password, try again.', category='error')
@@ -61,7 +64,7 @@ def sign_up():
             flash('Password must be at least 7 characters.', category='error')
         else:
             new_user = User(email=email, first_name=first_name,
-                            password=generate_password_hash(password1, method='sha256'))
+                            password=generate_password_hash(password1, method='sha256'), accountType="user")
             db.session.add(new_user)
             db.session.commit()
             login_user(new_user, remember=True)
@@ -74,6 +77,51 @@ def sign_up():
             return redirect(url_for('views.home'))
 
     return render_template("sign_up.html", user=current_user)
+
+
+@auth.route('/admin-signup', methods=['GET', 'POST'])
+def admin_signup():
+    if request.method == 'POST':
+        email = request.form.get('email')
+        first_name = request.form.get('firstName')
+        password1 = request.form.get('password1')
+        password2 = request.form.get('password2')
+        secretcode = request.form.get('secretcode')
+
+        user = User.query.filter_by(email=email).first()
+        name = User.query.filter_by(first_name=first_name).first()
+
+        if secretcode != "1234":
+            flash('Incorrect Secret Code!', category='error')
+        elif user:
+            flash('Email already exists.', category='error')
+        elif name:
+            flash('Username already exists.', category='error')
+        elif len(email) < 4:
+            flash('Email must be greater than 3 characters.', category='error')
+        elif len(first_name) < 3:
+            flash('First name must be greater than 2 characters.', category='error')
+        elif len(first_name) > 8:
+            flash('First name must be less than 9 characters.', category='error')
+        elif password1 != password2:
+            flash('Passwords don\'t match.', category='error')
+        elif len(password1) < 7:
+            flash('Password must be at least 7 characters.', category='error')
+        else:
+            new_user = User(email=email, first_name=first_name,
+                            password=generate_password_hash(password1, method='sha256'), accountType="admin")
+            db.session.add(new_user)
+            db.session.commit()
+            login_user(new_user, remember=True)
+            flash('Account created as Admin!', category='success')
+            # Notification
+            new_notification = Notification(
+                message=f"Admin Account Created. Welcome {first_name} Sir!", status="success", user_id=current_user.id)
+            db.session.add(new_notification)
+            db.session.commit()
+            return redirect(url_for('views.adminDashboard', user=current_user))
+
+    return render_template("admin_signup.html", user=current_user)
 
 
 @auth.route('/logout')

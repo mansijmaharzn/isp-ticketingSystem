@@ -116,8 +116,8 @@
                 <p class="card-text">Opened By: {{ ticket.username }}</p>
             </div>
             <div class="btn-group" role="group">
-                <button type="button" class="btn btn-danger" onClick='closeTicket({{ticket.id}})'>Close</button>
-                <button type="button" class="btn btn-success" onClick='solveTicket({{ticket.id}})'>Solve</button>
+                <button type="button" class="btn btn-danger" onClick='closeTicket("{{ticket.id}}")'>Close</button>
+                <button type="button" class="btn btn-success" onClick='solveTicket("{{ticket.id}}")'>Solve</button>
             </div>
         </div>
         <br />

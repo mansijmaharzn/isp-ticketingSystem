@@ -9,7 +9,6 @@ views = Blueprint('views', __name__)
 
 # User
 @views.route('/')
-@login_required
 def home():
     return render_template('home.html', user=current_user)
 
@@ -27,7 +26,7 @@ def support():
         db.session.add(new_ticket)
         db.session.commit()
         flash("Ticket Opened! We'll contact you soon.", category='success')
-        # Notificaation
+        # Notification
         new_notification = Notification(
             message="New Ticket Created!", status="success", user_id=current_user.id)
         db.session.add(new_notification)
@@ -58,29 +57,20 @@ def adminDashboard():
     return render_template('admin_dashboard.html', user=current_user, allTicket=allTicket)
 
 
-# @views.route('/delete-ticket', methods=['POST'])
-# @login_required
-# def delete_ticket():
-#     ticket = json.loads(request.data)
-#     ticketId = ticket['ticketId']
-#     ticket = Ticket.query.get(ticketId)
-#     if ticket:
-#         if ticket.user_id == current_user.id:
-#             db.session.delete(ticket)
-#             db.session.commit()
-
-#     return jsonify({})
-
-
 @views.route('/close-ticket', methods=['POST'])
 @login_required
 def close_ticket():
     ticket = json.loads(request.data)
-    print(ticket)
     ticketId = ticket['ticketId']
     ticket = Ticket.query.get(ticketId)
     if ticket:
         ticket.status = "Closed"
+        db.session.commit()
+
+        # Notification
+        new_notification = Notification(
+            message="Your ticket was closed!", status="error", user_id=ticket.user_id)
+        db.session.add(new_notification)
         db.session.commit()
 
     return jsonify({})
@@ -90,11 +80,16 @@ def close_ticket():
 @login_required
 def solve_ticket():
     ticket = json.loads(request.data)
-    print(ticket)
     ticketId = ticket['ticketId']
     ticket = Ticket.query.get(ticketId)
     if ticket:
         ticket.status = "Solved"
+        db.session.commit()
+
+        # Notification
+        new_notification = Notification(
+            message="Your ticket was solved!", status="success", user_id=ticket.user_id)
+        db.session.add(new_notification)
         db.session.commit()
 
     return jsonify({})

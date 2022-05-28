@@ -39,7 +39,7 @@
                 <a class="navbar-brand mt-2 mt-lg-0" href="#">
                     <!-- <img src="https://mdbcdn.b-cdn.net/img/logo/mdb-transaprent-noshadows.webp" height="15"
                         alt="MDB Logo" loading="lazy" /> -->
-                    KattuLink
+                    TargNet
                 </a>
                 <!-- Left links -->
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
@@ -97,6 +97,24 @@
     </nav>
     <!-- NavBar -->
 
+    <!-- Flashs -->
+    {% with messages = get_flashed_messages(with_categories=true) %} {% if messages %} {% for category, message in
+    messages %} {% if category == 'error' %}
+    <div class="alert alert-danger alter-dismissable fade show" role="alert">
+        {{ message }}
+        <button type="button" class="close" data-dismiss="alert">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    {% else %}
+    <div class="alert alert-success alter-dismissable fade show" role="alert">
+        {{ message }}
+        <button type="button" class="close" data-dismiss="alert">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    {% endif %} {% endfor %} {% endif %} {% endwith %}
+
     <br>
     <h1 align="center">Admin Dashboard</h1>
     <p align="center">Hi, {{ user.first_name }} our clients need your help!</p>
@@ -116,8 +134,8 @@
                 <p class="card-text">Opened By: {{ ticket.username }}</p>
             </div>
             <div class="btn-group" role="group">
-                <button type="button" class="btn btn-danger" onClick='closeTicket("{{ticket.id}}")'>Close</button>
-                <button type="button" class="btn btn-success" onClick='solveTicket("{{ticket.id}}")'>Solve</button>
+                <button type="button" class="btn btn-danger" onClick='closeTicket("{{ticket.id}}");'>Close</button>
+                <button type="button" class="btn btn-success" onClick='solveTicket("{{ticket.id}}");'>Solve</button>
             </div>
         </div>
         <br />

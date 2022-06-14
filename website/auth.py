@@ -74,7 +74,7 @@ def sign_up():
                 message=f"Account Created. Welcome {first_name}!", status="success", user_id=current_user.id)
             db.session.add(new_notification)
             db.session.commit()
-            return redirect(url_for('views.home'))
+            return redirect(url_for('views.ticket'))
 
     return render_template("sign_up.html", user=current_user)
 
@@ -116,7 +116,7 @@ def admin_signup():
             flash('Account created as Admin!', category='success')
             # Notification
             new_notification = Notification(
-                message=f"Admin Account Created. Welcome {first_name} Sir!", status="success", user_id=current_user.id)
+                message=f"Admin Account Created. Welcome Admin {first_name}!", status="success", user_id=current_user.id)
             db.session.add(new_notification)
             db.session.commit()
             return redirect(url_for('views.adminDashboard', user=current_user))
@@ -132,6 +132,7 @@ def logout():
         message="Logged Out!", status="error", user_id=current_user.id)
     db.session.add(new_notification)
     db.session.commit()
+
     logout_user()
     flash('Logged Out!', category='success')
     return redirect(url_for('auth.login'))

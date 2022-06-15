@@ -74,7 +74,7 @@ def sign_up():
                 message=f"Account Created. Welcome {first_name}!", status="success", user_id=current_user.id)
             db.session.add(new_notification)
             db.session.commit()
-            return redirect(url_for('views.ticket'))
+            return redirect(url_for('views.tickets'))
 
     return render_template("sign_up.html", user=current_user)
 

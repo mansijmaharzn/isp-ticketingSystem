@@ -5,13 +5,13 @@
 <h1 align="center">Your Tickets</h1>
 {% for ticket in user.tickets|reverse %}
 <div class="card">
-    <div class=" card-header">
+    <div class="card-header text-muted">
         @ {{ ticket.date }}
     </div>
     <div class="card-body">
-        <h5 class="card-title">{{ ticket.title }}</h5>
-        <p class="card-text">{{ ticket.desc }}</p>
-        <p class="card-text"> Ticket Status: {{ ticket.status }}</p>
+        <h5 class="card-title text-dark">{{ ticket.title }}</h5>
+        <p class="card-text text-primary">{{ ticket.desc }}</p>
+        <p class="card-text text-body"> Ticket Status: {{ ticket.status }}</p>
     </div>
 </div>
 <br />

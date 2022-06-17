@@ -19,6 +19,8 @@ def support():
     if request.method == 'POST':
         title = request.form.get('title')
         desc = request.form.get('desc')
+        if not desc:
+            desc = "No Description Provided!"
 
         # Ticket
         new_ticket = Ticket(

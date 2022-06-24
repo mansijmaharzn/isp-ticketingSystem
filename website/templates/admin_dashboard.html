@@ -19,6 +19,8 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
     <!-- MDB -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.0.0/mdb.min.css" rel="stylesheet" />
+    <!-- CSS -->
+    <link rel="stylesheet" href="static/styles/admin_dashboard.css">
 </head>
 
 <body>
@@ -118,20 +120,20 @@
     <br>
     <h1 align="center">Admin Dashboard</h1>
     <p align="center">Hi, {{ user.first_name }} our clients need your help!</p>
-
+    <br />
     <div class="container">
         <!-- Tickets -->
         {% for ticket in allTicket|reverse %}
 
         {% if ticket.status == 'Pending' %}
         <div class="card">
-            <div class=" card-header">
+            <div class="card-header text-muted">
                 @ {{ ticket.date }}
             </div>
             <div class="card-body">
-                <h5 class="card-title">{{ ticket.title }}</h5>
-                <p class="card-text">{{ ticket.desc }}</p>
-                <p class="card-text">Opened By: {{ ticket.username }}</p>
+                <h5 class="card-title text-dark">{{ ticket.title }}</h5>
+                <p class="card-text text-primary">{{ ticket.desc }}</p>
+                <p class="card-text text-body">Opened By: {{ ticket.username }}</p>
             </div>
             <div class="btn-group" role="group">
                 <button type="button" class="btn btn-danger" onClick='closeTicket("{{ticket.id}}");'>Close</button>
@@ -141,14 +143,14 @@
         <br />
         {% else %}
         <div class="card">
-            <div class=" card-header">
+            <div class=" card-header text-muted">
                 @ {{ ticket.date }}
             </div>
             <div class="card-body">
-                <h5 class="card-title">{{ ticket.title }}</h5>
-                <p class="card-text">{{ ticket.desc }}</p>
-                <p class="card-text">Opened By: {{ ticket.username }}</p>
-                <p class="card-text">Status: {{ ticket.status }}</p>
+                <h5 class="card-title text-dark">{{ ticket.title }}</h5>
+                <p class="card-text text-primary">{{ ticket.desc }}</p>
+                <p class="card-text text-body">Opened By: {{ ticket.username }}</p>
+                <p class="card-text text-body">Status: {{ ticket.status }}</p>
             </div>
         </div>
         <br />

@@ -28,7 +28,7 @@ def login():
                 if user.accountType == "admin":
                     return redirect(url_for('views.adminDashboard', user=current_user))
 
-                return redirect(url_for('views.home', user=current_user))
+                return redirect(url_for('views.tickets', user=current_user))
             else:
                 flash('Incorrect password, try again.', category='error')
         else:

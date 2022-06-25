@@ -2,11 +2,11 @@
 {% block title %}Your Profile{% endblock %}
 {% block content %}
 <br>
-<h1 align="center">Your Profile</h1>
-<h2 align="right">Hi, {{ user.first_name }}!</h2>
+<h1 align="center" class="zoomtext">Your Profile</h1>
+<h2 align="right" class="zoomtext">Hi, {{ user.first_name }}!</h2>
 <br>
-<h5>Name: {{ user.first_name }}</h5>
-<h5>E-mail: {{ user.email }}</h5>
+<h5 class="zoomtext">Name: {{ user.first_name }}</h5>
+<h5 class="zoomtext">E-mail: {{ user.email }}</h5>
 <br />
-<a href="/logout"><button type="button" class="btn btn-danger">Logout</button></a>
+<a href="/logout"><button type="button" class="btn btn-danger zoomtext">Logout</button></a>
 {% endblock %}

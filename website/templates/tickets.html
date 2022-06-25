@@ -2,10 +2,10 @@
 {% block title %}Tickets{% endblock %}
 {% block content %}
 <br>
-<h1 align="center">Your Tickets</h1>
+<h1 align="center" class="zoomtext">Your Tickets</h1>
 <br />
 {% for ticket in user.tickets|reverse %}
-<div class="card">
+<div class="card zoomtext">
     <div class="card-header text-muted">
         @ {{ ticket.date }}
     </div>
@@ -18,5 +18,5 @@
 <br />
 {% endfor %}
 
-<a href="/support"><button type="button" class="btn btn-primary mb-6">Report Problem</button></a>
+<a href="/support"><button type="button" class="btn btn-primary mb-6 zoomtext">Report Problem</button></a>
 {% endblock %}

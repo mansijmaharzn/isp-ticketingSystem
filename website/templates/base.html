@@ -156,7 +156,6 @@
     </nav>
     <!-- NavBar -->
 
-
     <!-- Flashs -->
     {% with messages = get_flashed_messages(with_categories=true) %} {% if messages %} {% for category, message in
     messages %} {% if category == 'error' %}
@@ -174,6 +173,14 @@
         </button>
     </div>
     {% endif %} {% endfor %} {% endif %} {% endwith %}
+
+    <!-- Zoom Buttons -->
+    <div class="accSection">
+        <button id="zoomOut" class="accButton"><i class="fa-solid fa-magnifying-glass-minus"></i></button>
+        <button id="zoomReset" class="accButton"><i class="fa-solid fa-rotate-left"></i></button>
+        <button id="zoomIn" class="accButton"><i class="fa-solid fa-magnifying-glass-plus"></i></button>
+    </div>
+    <!-- Zoom Buttons -->
 
     <!-- Contents -->
     <div class="container">{% block content %} {% endblock %}</div>
@@ -194,6 +201,8 @@
     <!-- MD BootstrapScripts -->
     <!-- MDB -->
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.0.0/mdb.min.js"></script>
+    <!-- JavaScript -->
+    <script type="text/javascript" src="{{ url_for('static', filename='index.js') }}"></script>
 </body>
 
 </html>

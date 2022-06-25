@@ -117,16 +117,24 @@
     </div>
     {% endif %} {% endfor %} {% endif %} {% endwith %}
 
+    <!-- Zoom Buttons -->
+    <div class="accSection">
+        <button id="zoomOut" class="accButton"><i class="fa-solid fa-magnifying-glass-minus"></i></button>
+        <button id="zoomReset" class="accButton"><i class="fa-solid fa-rotate-left"></i></button>
+        <button id="zoomIn" class="accButton"><i class="fa-solid fa-magnifying-glass-plus"></i></button>
+    </div>
+    <!-- Zoom Buttons -->
+
     <br>
-    <h1 align="center">Admin Dashboard</h1>
-    <p align="center">Hi, {{ user.first_name }} our clients need your help!</p>
+    <h1 align="center" class="zoomtext">Admin Dashboard</h1>
+    <p align="center" class="zoomtext">Hi, {{ user.first_name }} our clients need your help!</p>
     <br />
     <div class="container">
         <!-- Tickets -->
         {% for ticket in allTicket|reverse %}
 
         {% if ticket.status == 'Pending' %}
-        <div class="card">
+        <div class="card zoomtext">
             <div class="card-header text-muted">
                 @ {{ ticket.date }}
             </div>
@@ -142,7 +150,7 @@
         </div>
         <br />
         {% else %}
-        <div class="card">
+        <div class="card zoomtext">
             <div class=" card-header text-muted">
                 @ {{ ticket.date }}
             </div>

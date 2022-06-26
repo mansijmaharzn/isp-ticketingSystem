@@ -1,17 +1,95 @@
 {% extends "base.html" %}
 {% block title %}Home{% endblock %}
 
+{% block slider %}
+<!--Slider-->
+<div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <img src="https://live.staticflickr.com/7163/6742495519_c217b465c4_c.jpg" width="1903" height="630"
+                class="d-block w-100" alt="lloDING">
+        </div>
+        <div class="carousel-item">
+            <img src="https://glamournepal.com/wp-content/uploads/2015/04/Kabaddi-Kabaddi-dayahang-saugat.jpg"
+                width="1903" height="630" class="d-block w-100" alt="Loading">
+        </div>
+        <div class="carousel-item">
+            <img src="https://m.media-amazon.com/images/M/MV5BYmNlNzBkMjktMjYyOS00MjViLTkxZjQtMzI0OTBmMTgwOGUxXkEyXkFqcGdeQXVyNTEwOTEzNDk@._V1_.jpg"
+                width="1903" height="630" class="d-block w-100" alt="loading">
+        </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
+</div>
+{% endblock %}
 
 {% block content %}
-<br>
-<h1 class="zoomtext">Home</h1>
-<p class="zoomtext">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quae quos facere saepe pariatur minima
-    voluptatum
-    distinctio, vero qui maiores placeat fugiat ea quo molestiae veritatis excepturi officiis omnis corrupti nam libero
-    reprehenderit ducimus non reiciendis nostrum nisi! Molestiae porro incidunt aliquid minima nemo deleniti vero,
-    alias, hic modi autem, cumque eos? Explicabo minus animi reprehenderit error architecto deleniti sunt molestiae.
-    Tempore aliquam vitae magnam ducimus delectus, veritatis consequatur inventore quo optio facilis, cum dicta maxime
-    voluptas architecto pariatur voluptatem!</p>
+<section class="offer">
+    <h1 class="zoomtext">Ongoing offers</h1>
+    <p class="zoomtext">Its not free though</p>
+    <div class="row">
+        <div class="col zoomtext">
+            <h3>Dashain</h3>
+            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Amet voluptate necessitatibus quia facilis
+                ducimus nesciunt commodi ut itaque iure? Porro, quae aliquid </p>
+        </div>
+        <div class="col zoomtext">
+            <h3>Tihar</h3>
+            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Amet voluptate necessitatibus quia facilis
+                ducimus nesciunt commodi ut itaque iure? Porro, quae aliquid dolores et </p>
+        </div>
+        <div class="col zoomtext">
+            <h3>Chhat</h3>
+            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Amet voluptate necessitatibus quia facilis
+                ducimus nesciunt commodi ut itaque iure? Porro, quae aliquid dolores et </p>
+        </div>
+    </div>
+    <!-- bro ya between space haldeu hai box bich ma space hai halako xaina maila-->
+</section>
+<!-- information -->
+<section class="information">
+    <h1 class="zoomtext">Why choose us</h1>
+    <p class="zoomtext">We are not scammer</p>
+    <div class="row zoomtext">
+        <div class="map">
+            <img
+                src="https://thumbs.dreamstime.com/z/anime-girl-cat-ears-cigarette-hand-anime-girl-cat-ears-cigarette-hand-vector-227737852.jpg">
+            <!-- ya kati coverage xa hai ta  -->
+            <div class="layer">
+                <h3>MAP</h3>
+            </div>
+        </div>
+        <div class="map">
+            <img
+                src="https://thumbs.dreamstime.com/z/anime-girl-cat-ears-cigarette-hand-anime-girl-cat-ears-cigarette-hand-vector-227737852.jpg">
+            <!-- ya kati coverage xa hai ta  -->
+            <div class="layer">
+                <h3>Speed Test</h3>
+            </div>
+        </div>
+        <div class="map">
+            <img
+                src="https://thumbs.dreamstime.com/z/anime-girl-cat-ears-cigarette-hand-anime-girl-cat-ears-cigarette-hand-vector-227737852.jpg">
+            <!-- ya kati coverage xa hai ta  -->
+            <div class="layer">
+                <h3>Best possible Price</h3>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+<!-- about us contack us tala tira hai ta-->
+<div class="about-us">
+    <h3 class="zoomtext">About us</h3>
+    <p class="zoomtext">We are the Champions</p>
+</div>
 {% endblock %}
 
 {% block footer %}
@@ -51,7 +129,7 @@
     <!-- Section: Social media -->
 
     <!-- Section: Links  -->
-    <section class="">
+    <section class="footer-links">
         <div class="container text-center text-md-start mt-5">
             <!-- Grid row -->
             <div class="row mt-3">
@@ -61,7 +139,7 @@
                     <h6 class="text-uppercase fw-bold mb-4">
                         <i class="fas fa-gem me-3"></i>TargNet
                     </h6>
-                    <p>
+                    <p class="text-white">
                         ---our moto here---
                     </p>
                 </div>
@@ -74,16 +152,16 @@
                         Services
                     </h6>
                     <p>
-                        <a href="#" class="text-reset">Internet Television</a>
+                        <a href="#" class="text-white">Internet Television</a>
                     </p>
                     <p>
-                        <a href="#" class="text-reset">1Gbps</a>
+                        <a href="#" class="text-white">1Gbps</a>
                     </p>
                     <p>
-                        <a href="#" class="text-reset">Refer Offer</a>
+                        <a href="#" class="text-white">Refer Offer</a>
                     </p>
                     <p>
-                        <a href="#" class="text-reset">SafeNet</a>
+                        <a href="#" class="text-white">SafeNet</a>
                     </p>
                 </div>
                 <!-- Grid column -->
@@ -95,13 +173,13 @@
                         Bills and Payment
                     </h6>
                     <p>
-                        <a href="#" class="text-reset">eWallet Payment</a>
+                        <a href="#" class="text-white">eWallet Payment</a>
                     </p>
                     <p>
-                        <a href="#" class="text-reset">Internet Banking</a>
+                        <a href="#" class="text-white">Internet Banking</a>
                     </p>
                     <p>
-                        <a href="#" class="text-reset">Mobile Banking</a>
+                        <a href="#" class="text-white">Mobile Banking</a>
                     </p>
                 </div>
                 <!-- Grid column -->
@@ -110,15 +188,15 @@
                 <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
                     <!-- Links -->
                     <h6 class="text-uppercase fw-bold mb-4">
-                        Contact
+                        Contact Us
                     </h6>
-                    <p><i class="fas fa-home me-3"></i> Gwarko, Lalitpur, Nepal</p>
-                    <p>
+                    <p class="text-white"><i class="fas fa-home me-3"></i> Gwarko, Lalitpur, Nepal</p>
+                    <p class="text-white">
                         <i class="fas fa-envelope me-3"></i>
                         info@targnet.com
                     </p>
-                    <p><i class="fas fa-phone me-3"></i> + 01 234 567 88</p>
-                    <p><i class="fas fa-print me-3"></i> + 01 234 567 89</p>
+                    <p class="text-white"><i class="fas fa-phone me-3"></i> + 01 234 567 88</p>
+                    <p class="text-white"><i class="fas fa-print me-3"></i> + 01 234 567 89</p>
                 </div>
                 <!-- Grid column -->
             </div>

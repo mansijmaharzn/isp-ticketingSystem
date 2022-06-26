@@ -19,7 +19,7 @@ function solveTicket(ticketId) {
 
 // For zoom Accessibility
 let zoom = 1;
-let zoomStep = 0.1;
+let zoomStep = 0.05;
 const zoomText = document.getElementsByClassName("zoomtext");
 
 document.getElementById("zoomIn").addEventListener("click", function () {

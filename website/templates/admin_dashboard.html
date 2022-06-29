@@ -134,7 +134,7 @@
         {% for ticket in allTicket|reverse %}
 
         {% if ticket.status == 'Pending' %}
-        <div class="card zoomtext">
+        <div class="card zoomtext mb-3">
             <div class="card-header text-muted">
                 @ {{ ticket.date }}
             </div>
@@ -150,7 +150,7 @@
         </div>
         <br />
         {% else %}
-        <div class="card zoomtext">
+        <div class="card zoomtext mb-3">
             <div class=" card-header text-muted">
                 @ {{ ticket.date }}
             </div>

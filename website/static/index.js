@@ -20,19 +20,27 @@ function solveTicket(ticketId) {
 // For zoom Accessibility
 let zoom = 1;
 let zoomStep = 0.05;
+let zoomCount = 0;
 const zoomText = document.getElementsByClassName("zoomtext");
 
 document.getElementById("zoomIn").addEventListener("click", function () {
-    zoom += zoomStep;
-    for (let i = 0; i < zoomText.length; i++) {
-        zoomText[i].style.transform = "scale(" + zoom + ")";
+    console.log(zoomCount);
+    if (zoomCount <= 10) {
+        zoom += zoomStep;
+        for (let i = 0; i < zoomText.length; i++) {
+            zoomText[i].style.transform = "scale(" + zoom + ")";
+            zoomCount += 1;
+        }
     }
 });
 document.getElementById("zoomOut").addEventListener("click", function () {
-    if (zoom > zoomStep) {
-        zoom -= zoomStep;
-        for (let i = 0; i < zoomText.length; i++) {
-            zoomText[i].style.transform = "scale(" + zoom + ")";
+    if (zoomCount <= 10) {
+        if (zoom > zoomStep) {
+            zoom -= zoomStep;
+            for (let i = 0; i < zoomText.length; i++) {
+                zoomText[i].style.transform = "scale(" + zoom + ")";
+                zoomCount += 1;
+            }
         }
     }
 });
@@ -40,6 +48,7 @@ document.getElementById("zoomReset").addEventListener("click", function () {
     zoom = 1;
     for (let i = 0; i < zoomText.length; i++) {
         zoomText[i].style.transform = "scale(" + zoom + ")";
+        zoomCount = 0;
     }
 })
 

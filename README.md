@@ -50,7 +50,7 @@ isp-ticketingSystem codebase before embarking on an upgrade.
 
 
 ## Help
-[E-mail](teamtarget@target.com) Us if you'd like professional help managing your isp-ticketingSystem installation.
+E-mail Us if you'd like professional help managing your isp-ticketingSystem installation.
 
 
 ## License

@@ -13,8 +13,9 @@ def home():
     try:
         if current_user.accountType == "admin":
             return redirect(url_for('views.adminDashboard'))
-    except:
-        return
+    except Exception as e:
+        print(e)
+
     return render_template('home.html', user=current_user)
 
 

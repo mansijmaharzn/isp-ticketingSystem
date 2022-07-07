@@ -10,6 +10,11 @@ views = Blueprint('views', __name__)
 # User
 @views.route('/')
 def home():
+    try:
+        if current_user.accountType == "admin":
+            return redirect(url_for('views.adminDashboard'))
+    except:
+        return
     return render_template('home.html', user=current_user)
 
 

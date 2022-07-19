@@ -25,7 +25,7 @@ const zoomText = document.getElementsByClassName("zoomtext");
 
 document.getElementById("zoomIn").addEventListener("click", function () {
     console.log(zoomCount);
-    if (zoomCount <= 10) {
+    if (zoomCount <= 3) {
         zoom += zoomStep;
         for (let i = 0; i < zoomText.length; i++) {
             zoomText[i].style.transform = "scale(" + zoom + ")";
@@ -34,7 +34,8 @@ document.getElementById("zoomIn").addEventListener("click", function () {
     }
 });
 document.getElementById("zoomOut").addEventListener("click", function () {
-    if (zoomCount <= 10) {
+    console.log(zoomCount);
+    if (zoomCount <= 3) {
         if (zoom > zoomStep) {
             zoom -= zoomStep;
             for (let i = 0; i < zoomText.length; i++) {
@@ -51,5 +52,3 @@ document.getElementById("zoomReset").addEventListener("click", function () {
         zoomCount = 0;
     }
 })
-
-// zoomReset
